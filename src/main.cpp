@@ -204,9 +204,11 @@ void loop()
             Heltec.display->drawXbm(0, 0, smile_width, smile_height, smile_bits);
             Heltec.display->display();
         }
-
-        // update OLED display
-        drawMonitor(currentBladderPressure, data.inflateTargetPressure, pressure_min);
+        else
+        {
+            // update OLED display
+            drawMonitor(currentBladderPressure, data.inflateTargetPressure, pressure_min);
+        }
 
         // transmit pressure reading to mobile device
         pTxCharacteristic->setValue(currentBladderPressure);
@@ -215,14 +217,18 @@ void loop()
 
         // E-Stop Functionality
         bool eStopSwitchStatus = digitalRead(eStopSwitch);
+        Serial.println("Interrupt Flag: " + String(eStopInterruptEnabled));
 
+        // If GPIO pin goes low (meaning switch is on) or the interrupt is enabled
         if (!eStopSwitchStatus || eStopInterruptEnabled)
         {
             eStopWasEnabled = true;
             eStopEnabledHandler();
         }
-        else if (eStopSwitchStatus && !eStopInterruptEnabled && eStopWasEnabled)
+        // If GPIO pin is high (estop disabled) and interrupt flag is off and the estop was previously enabled
+        else if (eStopSwitchStatus && eStopWasEnabled)
         {
+            eStopInterruptEnabled = false;
             eStopWasEnabled = false;
             eStopDisabledHandler();
         }
@@ -432,7 +438,7 @@ void IRAM_ATTR isr()
 void eStopEnabledHandler()
 {
     Serial.println("Power Disconnected OR EStop Enabled");
-    digitalWrite(35, HIGH);
+    digitalWrite(LED_BUILTIN, HIGH);
     // deflate bladder
     ledcWrite(pwmInflate, 0);
     if (!eStopDeflateComplete)
@@ -449,9 +455,9 @@ void eStopEnabledHandler()
 
 void eStopDisabledHandler()
 {
-    eStopInterruptEnabled = false;
-    eStopDeflateComplete = false;
     operationMode = STANDBY;
+    digitalWrite(LED_BUILTIN, LOW);
+    eStopDeflateComplete = false;
 }
 
 float readPressureSensor()
