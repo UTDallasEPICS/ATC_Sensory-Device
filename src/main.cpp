@@ -1,6 +1,5 @@
 /* Authors:
             Sasha Kaplan        Github: Sashakap, Alexander de Bont,
-            Harold F
             Varsha Thomas       Github: VT_c0des
             Mandy Hardono       Github: hardonom
             Rohan Thomas        Github: tr0han
