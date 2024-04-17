@@ -11,10 +11,10 @@
 #define EOC_PIN -1   // set to any GPIO pin to read end-of-conversion by pin
 
 // GPIO Pins
-const int inflateMotorAin1 = 20;
-const int inflateMotorAin2 = 19;
-const int deflateMotorBin1 = 7;
-const int deflateMotorBin2 = 6;
+const int inflateMotorAin1 = 7;
+const int inflateMotorAin2 = 6;
+const int deflateMotorBin1 = 20;
+const int deflateMotorBin2 = 19;
 const int eStopSwitch = 1;
 
 // PWM motor control characteristics
