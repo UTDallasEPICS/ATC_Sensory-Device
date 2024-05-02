@@ -1,7 +1,16 @@
 # Portable Hugs - Microcontroller Code
-The ATC Sensory Cuff is a portable, wearable, mobile-app controlled device that applies a deep pressure sensory based intervention to provide contactless relief from sensory overstimulation. The microcontroller for this device is the Heltec ESP32 WiFi Kit V3, programmed in C++. The ESP32 communicates with the Android and iOS mobile apps through Bluetooth Low Energy (BLE) to control or communicate with device peripherals (motor driver, pressure sensor, emergency stop, etc.). VSCode with the PlatformIO extension was utilized as the platform for developing on this microcontroller.
+The ATC Sensory Cuff is a portable, wearable, mobile-app controlled device that applies a deep pressure sensory based intervention (SBI)to provide contactless relief from sensory overstimulation. The microcontroller for this device is the Heltec ESP32 WiFi Kit V3, programmed in C++. The ESP32 communicates with the Android and iOS mobile apps through Bluetooth Low Energy (BLE) to control or communicate with device peripherals (motor driver, pressure sensor, emergency stop, etc.). VSCode with the PlatformIO extension was utilized as the platform for developing on this microcontroller.
+
+# Functional Requirements
+- take from project plan
+- offer more specifics for each main component: BLE, operation mode, inflate and deflate, estop, display info
+
+# Tech Stack 
+- update for any external libraries that we used or other packages
 
 # Instructions to Clone, Build, and Run
+- make sure flow in steps matches what was done this sem 
+- address any gaps and also the issues w building w platform io that we saw
 
 ## Prequisites
 
