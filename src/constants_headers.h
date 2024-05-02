@@ -1,6 +1,6 @@
 #include "headerFiles.h"
 
-#define DEVICE_NAME "ATC_8"
+#define DEVICE_NAME "ATC_7"
 
 // Custom I2C Pins
 #define I2C_SCL 42
